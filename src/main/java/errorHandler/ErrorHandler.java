@@ -1,6 +1,6 @@
 package errorHandler;
 
-import Log.Log;
+import log.Log;
 
 /**
  * Created by Alireza on 6/28/2015.

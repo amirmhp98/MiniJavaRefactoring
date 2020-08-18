@@ -51,7 +51,7 @@ public class Memory {
         return codeBlock.size();
     }
 
-    public void pintCodeBlock() {
+		public void printCodeBlock() {
         presenter.present("Code Block");
         for (int i = 0; i < codeBlock.size(); i++) {
 			presenter.present(i + " : " + codeBlock.get(i).toString());

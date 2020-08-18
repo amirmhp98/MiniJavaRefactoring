@@ -1,6 +1,6 @@
 package codeGenerator;
 
-import Log.Log;
+import log.Log;
 import errorHandler.ErrorHandler;
 import scanner.token.Token;
 import semantic.symbol.Symbol;
@@ -25,7 +25,7 @@ public class CodeGenerator {
     }
     public void printMemory()
     {
-        memory.pintCodeBlock();
+        memory.printCodeBlock();
     }
     public void semanticFunction(int func, Token next) {
         Log.print("codegenerator : " + func);
