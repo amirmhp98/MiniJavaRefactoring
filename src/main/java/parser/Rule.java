@@ -34,7 +34,7 @@ public class Rule {
                     RHS.add(new GrammarSymbol(NonTerminal.valueOf(s)));
                 } catch (Exception e) {
 //                    try{
-                        RHS.add(new GrammarSymbol(new Token(Token.getTyepFormString(s), s)));
+                        RHS.add(new GrammarSymbol(new Token(Token.getTypeFromString(s), s)));
 //                    }catch (IllegalArgumentException d){
 //                        d.printStackTrace();
 //                        Log.print(s);

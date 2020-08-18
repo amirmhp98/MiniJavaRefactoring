@@ -147,7 +147,7 @@ public class CodeGenerator {
     }
 
     //    public void spid(Token next){
-//        symbolStack.push(next.value);
+//        symbolStack.push(next.getValue());
 //    }
     public void checkID() {
         symbolStack.pop();
@@ -162,9 +162,9 @@ public class CodeGenerator {
             String className = symbolStack.pop();
             try {
 
-                Symbol s = symbolTable.get(className, methodName, next.value);
+                Symbol s = symbolTable.get(className, methodName, next.getValue());
                 VarType t = VarType.Int;
-                switch (s.type) {
+                switch (s.getType()) {
                     case Bool:
                         t = VarType.Bool;
                         break;
@@ -172,7 +172,7 @@ public class CodeGenerator {
                         t = VarType.Int;
                         break;
                 }
-                ss.push(new Address(s.address, t));
+                ss.push(new Address(s.getAddress(), t));
 
 
             } catch (Exception e) {
@@ -183,7 +183,7 @@ public class CodeGenerator {
         } else {
             ss.push(new Address(0, VarType.Non));
         }
-        symbolStack.push(next.value);
+        symbolStack.push(next.getValue());
     }
 
     public void fpid() {
@@ -192,7 +192,7 @@ public class CodeGenerator {
 
         Symbol s = symbolTable.get(symbolStack.pop(), symbolStack.pop());
         VarType t = VarType.Int;
-        switch (s.type) {
+        switch (s.getType()) {
             case Bool:
                 t = VarType.Bool;
                 break;
@@ -200,16 +200,16 @@ public class CodeGenerator {
                 t = VarType.Int;
                 break;
         }
-        ss.push(new Address(s.address, t));
+        ss.push(new Address(s.getAddress(), t));
 
     }
 
     public void kpid(Token next) {
-        ss.push(symbolTable.get(next.value));
+        ss.push(symbolTable.get(next.getValue()));
     }
 
     public void intpid(Token next) {
-        ss.push(new Address(Integer.parseInt(next.value), VarType.Int, TypeAddress.Immediate));
+        ss.push(new Address(Integer.parseInt(next.getValue()), VarType.Int, TypeAddress.Immediate));
     }
 
     public void startCall() {
@@ -262,7 +262,7 @@ public class CodeGenerator {
         try {
             Symbol s = symbolTable.getNextParam(callStack.peek(), methodName);
             VarType t = VarType.Int;
-            switch (s.type) {
+            switch (s.getType()) {
                 case Bool:
                     t = VarType.Bool;
                     break;
@@ -274,7 +274,7 @@ public class CodeGenerator {
             if (param.getVarType() != t) {
                 ErrorHandler.printError("The argument type isn't match");
             }
-            memory.add3AddressCode(Operation.ASSIGN, param, new Address(s.address, t), null);
+            memory.add3AddressCode(Operation.ASSIGN, param, new Address(s.getAddress(), t), null);
 
 //        symbolStack.push(className);
 

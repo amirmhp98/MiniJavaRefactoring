@@ -6,8 +6,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Token {
-    public Type type;
-    public String value;
+    private final Type type;
+    private final String value;
 
     public Token(Type type, String value) {
         this.type = type;
@@ -40,7 +40,7 @@ public class Token {
         return result;
     }
 
-    public static Type getTyepFormString(String s) {
+    public static Type getTypeFromString(String s) {
         Pattern pattern;
         Matcher matcher;
         for (Type t : Type.values()) {
@@ -64,4 +64,12 @@ public class Token {
 //        }
         throw new IllegalArgumentException();
     }
+
+	public Type getType() {
+		return type;
+	}
+
+	public String getValue() {
+		return value;
+	}
 }
