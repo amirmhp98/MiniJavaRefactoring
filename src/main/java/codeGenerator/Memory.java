@@ -1,5 +1,8 @@
 package codeGenerator;
 
+import presentation.ConsolePresentationServiceImpl;
+import presentation.PresentationService;
+
 import java.util.ArrayList;
 
 /**
@@ -13,6 +16,7 @@ public class Memory {
     private final int stratDataMemoryAddress = 200;
     private final int dataSize = 4;
     private final int tempSize = 4;
+    private final PresentationService presenter = new ConsolePresentationServiceImpl();
 
     public Memory() {
         codeBlock = new ArrayList<_3AddressCode>();
@@ -48,9 +52,9 @@ public class Memory {
     }
 
     public void pintCodeBlock() {
-        System.out.println("Code Block");
+        presenter.present("Code Block");
         for (int i = 0; i < codeBlock.size(); i++) {
-            System.out.println(i + " : " + codeBlock.get(i).toString());
+			presenter.present(i + " : " + codeBlock.get(i).toString());
         }
     }
 }
