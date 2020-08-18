@@ -60,10 +60,10 @@ public class Memory {
 }
 
 class _3AddressCode {
-    public Operation operation;
-    public Address Operand1;
-    public Address Operand2;
-    public Address Operand3;
+    private Operation operation;
+    private Address Operand1;
+    private Address Operand2;
+    private Address Operand3;
 
     public _3AddressCode() {
 
