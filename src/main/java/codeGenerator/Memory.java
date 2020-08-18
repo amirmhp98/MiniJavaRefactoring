@@ -60,13 +60,16 @@ public class Memory {
 }
 
 class _3AddressCode {
-    private Operation operation;
-    private Address Operand1;
-    private Address Operand2;
-    private Address Operand3;
+    private final Operation operation;
+	private final Address Operand1;
+	private final Address Operand2;
+	private final Address Operand3;
 
     public _3AddressCode() {
-
+		operation = null;
+		Operand1 = null;
+		Operand2 = null;
+		Operand3 = null;
     }
 
     public _3AddressCode(Operation op, Address opr1, Address opr2, Address opr3) {
@@ -79,7 +82,7 @@ class _3AddressCode {
     public String toString()
     {
         if(operation == null) return "";
-        StringBuffer res = new StringBuffer("(");
+        StringBuilder res = new StringBuilder("(");
         res.append(operation.toString()).append(",");
         if(Operand1 != null)
             res.append(Operand1.toString());
