@@ -9,19 +9,19 @@ public class Address {
 	private VarType varType;
 
 	public Address(int num, VarType varType, TypeAddress type) {
-		this.num = num;
-		this.type = type;
-		this.varType = varType;
+		this.setNum(num);
+		this.setType(type);
+		this.setVarType(varType);
 	}
 
 	public Address(int num, VarType varType) {
-		this.num = num;
-		this.type = TypeAddress.DIRECT;
-		this.varType = varType;
+		this.setNum(num);
+		this.setType(TypeAddress.DIRECT);
+		this.setVarType(varType);
 	}
 
 	public String toString() {
-		switch (type) {
+		switch (this.getType()) {
 			case DIRECT: //I know that it's redundant but we keep it for readability
 				return num + "";
 			case INDIRECT:
@@ -43,5 +43,17 @@ public class Address {
 
 	public TypeAddress getType() {
 		return type;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	public void setType(TypeAddress type) {
+		this.type = type;
+	}
+
+	public void setVarType(VarType varType) {
+		this.varType = varType;
 	}
 }
