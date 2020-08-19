@@ -40,7 +40,7 @@ public class CodeGenerator {
 				pid(next);
 				break;
 			case 3:
-				fpid();
+				fPid();
 				break;
 			case 4:
 				kpid(next);
@@ -180,7 +180,7 @@ public class CodeGenerator {
 	}
 
 
-	public void fpid() {
+	public void fPid() {
 		ss.pop();
 		ss.pop();
 
