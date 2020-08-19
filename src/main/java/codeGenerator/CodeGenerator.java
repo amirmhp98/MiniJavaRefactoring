@@ -164,15 +164,7 @@ public class CodeGenerator {
 			try {
 
 				Symbol s = symbolTable.get(className, methodName, next.getValue());
-				VarType t = VarType.Int;
-				switch (s.getType()) {
-					case Bool:
-						t = VarType.Bool;
-						break;
-					case Int:
-						t = VarType.Int;
-						break;
-				}
+				VarType t = extractVarType(s);
 				ss.push(new Address(s.getAddress(), t));
 
 
@@ -187,20 +179,13 @@ public class CodeGenerator {
 		symbolStack.push(next.getValue());
 	}
 
+
 	public void fpid() {
 		ss.pop();
 		ss.pop();
 
 		Symbol s = symbolTable.get(symbolStack.pop(), symbolStack.pop());
-		VarType t = VarType.Int;
-		switch (s.getType()) {
-			case Bool:
-				t = VarType.Bool;
-				break;
-			case Int:
-				t = VarType.Int;
-				break;
-		}
+		VarType t = extractVarType(s);
 		ss.push(new Address(s.getAddress(), t));
 
 	}
@@ -262,15 +247,7 @@ public class CodeGenerator {
 //        String className = symbolStack.pop();
 		try {
 			Symbol s = symbolTable.getNextParam(callStack.peek(), methodName);
-			VarType t = VarType.Int;
-			switch (s.getType()) {
-				case Bool:
-					t = VarType.Bool;
-					break;
-				case Int:
-					t = VarType.Int;
-					break;
-			}
+			VarType t = extractVarType(s);
 			Address param = ss.pop();
 			if (param.getVarType() != t) {
 				ErrorHandler.printError("The argument type isn't match");
@@ -509,6 +486,19 @@ public class CodeGenerator {
 		if (s1.getVarType() != s2.getVarType()) {
 			ErrorHandler.printError("The type of operands in " + operation + " operator is different");
 		}
+	}
+
+	private VarType extractVarType(Symbol s) {
+		VarType t = VarType.Int;
+		switch (s.getType()) {
+			case Bool:
+				t = VarType.Bool;
+				break;
+			case Int:
+				t = VarType.Int;
+				break;
+		}
+		return t;
 	}
 
 }
