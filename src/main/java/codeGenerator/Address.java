@@ -5,23 +5,23 @@ package codeGenerator;
  */
 public class Address {
 	private int num;
-	private TypeAddress Type;
+	private TypeAddress type;
 	private VarType varType;
 
-	public Address(int num, VarType varType, TypeAddress Type) {
+	public Address(int num, VarType varType, TypeAddress type) {
 		this.num = num;
-		this.Type = Type;
+		this.type = type;
 		this.varType = varType;
 	}
 
 	public Address(int num, VarType varType) {
 		this.num = num;
-		this.Type = TypeAddress.DIRECT;
+		this.type = TypeAddress.DIRECT;
 		this.varType = varType;
 	}
 
 	public String toString() {
-		switch (Type) {
+		switch (type) {
 			case DIRECT: //I know that it's redundant but we keep it for readability
 				return num + "";
 			case INDIRECT:
@@ -42,6 +42,6 @@ public class Address {
 	}
 
 	public TypeAddress getType() {
-		return Type;
+		return type;
 	}
 }

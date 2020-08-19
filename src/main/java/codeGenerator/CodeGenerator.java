@@ -459,9 +459,6 @@ public class CodeGenerator {
 		symbolTable.setLastType(SymbolType.INT);
 	}
 
-	public void main() {
-
-	}
 
 	private void checkIntOperandsForOperation(Address s2, Address s1, String operation) {
 		if (s1.getVarType() != VarType.INT || s2.getVarType() != VarType.INT) {
