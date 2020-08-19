@@ -15,18 +15,18 @@ public class Address {
 	}
 
 	public Address(int num, VarType varType) {
-		this.setNum(num);
-		this.setType(TypeAddress.DIRECT);
-		this.setVarType(varType);
+		this.num = num;
+		this.Type = TypeAddress.Direct;
+		this.varType = varType;
 	}
 
 	public String toString() {
-		switch (this.getType()) {
-			case DIRECT: //I know that it's redundant but we keep it for readability
+		switch (Type) {
+			case Direct: //I know that it's redundant but we keep it for readability
 				return num + "";
-			case INDIRECT:
+			case Indirect:
 				return "@" + num;
-			case IMMEDIATE:
+			case Immediate:
 				return "#" + num;
 			default:
 				return num + "";
