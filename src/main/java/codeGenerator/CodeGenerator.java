@@ -480,9 +480,9 @@ public class CodeGenerator {
 			case Bool:
 				return VarType.Bool;
 			case Int: //keep it for readability
-				return  VarType.Int;
+				return VarType.Int;
 			default:
-				return  VarType.Int;
+				return VarType.Int;
 		}
 	}
 
