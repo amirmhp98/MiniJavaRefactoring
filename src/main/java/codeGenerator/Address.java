@@ -15,13 +15,13 @@ public class Address {
 	}
 
 	public Address(int num, VarType varType) {
-		this.num = num;
-		this.Type = TypeAddress.Direct;
-		this.varType = varType;
+		this.setNum(num);
+		this.setType(TypeAddress.Direct);
+		this.setVarType(varType);
 	}
 
 	public String toString() {
-		switch (Type) {
+		switch (this.getType()) {
 			case Direct: //I know that it's redundant but we keep it for readability
 				return num + "";
 			case Indirect:
@@ -43,6 +43,18 @@ public class Address {
 
 	public TypeAddress getType() {
 		return type;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	public void setType(TypeAddress type) {
+		this.type = type;
+	}
+
+	public void setVarType(VarType varType) {
+		this.varType = varType;
 	}
 
 	public void setNum(int num) {
