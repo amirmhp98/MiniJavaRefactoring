@@ -476,16 +476,14 @@ public class CodeGenerator {
 	}
 
 	private VarType extractVarType(SymbolType st) {
-		VarType t = VarType.Int;
 		switch (st) {
 			case Bool:
-				t = VarType.Bool;
-				break;
-			case Int:
-				t = VarType.Int;
-				break;
+				return VarType.Bool;
+			case Int: //keep it for readability
+				return  VarType.Int;
+			default:
+				return  VarType.Int;
 		}
-		return t;
 	}
 
 }
