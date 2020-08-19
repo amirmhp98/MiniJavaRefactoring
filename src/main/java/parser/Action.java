@@ -1,7 +1,7 @@
 package parser;
 
 public class Action {
-	private act action;
+	private Act type;
 	//if action = shift : number is state
 	//if action = reduce : number is number of rule
 	private int state;
@@ -12,44 +12,44 @@ public class Action {
 
 	public static Action buildShiftAction(int state) {
 		Action action = new Action();
-		action.setAction(act.shift);
+		action.setType(Act.SHIFT);
 		action.setState(state);
 		return action;
 	}
 
 	public static Action buildReduceAction(int ruleNumber) {
 		Action action = new Action();
-		action.setAction(act.reduce);
+		action.setType(Act.REDUCE);
 		action.setRuleNumber(ruleNumber);
 		return action;
 	}
 
 	public static Action buildAcceptAction() {
 		Action action = new Action();
-		action.setAction(act.accept);
+		action.setType(Act.ACCEPT);
 		return action;
 	}
 
 	public String toString() {
-		switch (action) {
-			case accept:
+		switch (type) {
+			case ACCEPT:
 				return "acc";
-			case shift:
+			case SHIFT:
 				return "s" + state;
-			case reduce:
+			case REDUCE:
 				return "r" + ruleNumber;
 			default:
-				return action.toString();
+				return type.toString();
 		}
 
 	}
 
-	public act getAction() {
-		return action;
+	public Act getType() {
+		return type;
 	}
 
-	public void setAction(act action) {
-		this.action = action;
+	public void setType(Act type) {
+		this.type = type;
 	}
 
 	public int getState() {
@@ -69,8 +69,8 @@ public class Action {
 	}
 }
 
-enum act {
-	shift,
-	reduce,
-	accept
+enum Act {
+	SHIFT,
+	REDUCE,
+	ACCEPT
 }

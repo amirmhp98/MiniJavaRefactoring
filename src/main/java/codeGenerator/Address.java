@@ -16,17 +16,17 @@ public class Address {
 
 	public Address(int num, VarType varType) {
 		this.num = num;
-		this.Type = TypeAddress.Direct;
+		this.Type = TypeAddress.DIRECT;
 		this.varType = varType;
 	}
 
 	public String toString() {
 		switch (Type) {
-			case Direct: //I know that it's redundant but we keep it for readability
+			case DIRECT: //I know that it's redundant but we keep it for readability
 				return num + "";
-			case Indirect:
+			case INDIRECT:
 				return "@" + num;
-			case Immediate:
+			case IMMEDIATE:
 				return "#" + num;
 			default:
 				return num + "";
