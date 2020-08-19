@@ -5,7 +5,10 @@ package log;
  */
 public final class Log {
 
-    public static void print(String s)
+	private Log() {
+	}
+
+	public static void print(String s)
     {
 //        System.out.println(s);
     }
