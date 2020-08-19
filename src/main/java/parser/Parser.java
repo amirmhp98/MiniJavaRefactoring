@@ -1,7 +1,7 @@
 package parser;
 
 
-import codeGenerator.CodeGenerator;
+import codeGenerator.CodeGeneratorFacade;
 import errorHandler.ErrorHandler;
 import log.Log;
 import scanner.LexicalAnalyzer;
@@ -19,7 +19,7 @@ public class Parser {
 	private List<Rule> rules;
 	private Stack<Integer> parsStack;
 	private ParseTable parseTable;
-	private CodeGenerator cg;
+	private CodeGeneratorFacade codeGeneratorFacade;
 
 	public Parser() {
 		initializeParseStack();
@@ -59,7 +59,7 @@ public class Parser {
 						Log.print(/*"new State : " + */parsStack.peek() + "");
 //                        Log.print("");
 						try {
-							cg.semanticFunction(rule.semanticAction, lookAhead);
+							codeGeneratorFacade.semanticFunction(rule.semanticAction, lookAhead);
 						} catch (Exception e) {
 							Log.print("Code Genetator Error");
 						}
@@ -93,14 +93,14 @@ public class Parser {
 
 		}
 		if (!ErrorHandler.hasError) {
-			cg.printMemory();
+			codeGeneratorFacade.printMemory();
 		}
 
 
 	}
 
 	private void initializeCodeGenerator() {
-		cg = new CodeGenerator();
+		codeGeneratorFacade = new CodeGeneratorFacade();
 	}
 
 	private void initializeRules() {
