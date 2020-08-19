@@ -220,8 +220,8 @@ public class CodeGenerator {
 			ErrorHandler.printError("The few argument pass for method");
 		} catch (IndexOutOfBoundsException e) {
 		}
-		SymbolType st = symbolTable.getMethodReturnType(className, methodName);
-		VarType t = extractVarType(st);
+		SymbolType symbolType = symbolTable.getMethodReturnType(className, methodName);
+		VarType t = extractVarType(symbolType);
 		Address temp = new Address(memory.getTemp(), t);
 		ss.push(temp);
 		memory.add3AddressCode(Operation.ASSIGN, new Address(temp.getNum(), VarType.Address, TypeAddress.Immediate), new Address(symbolTable.getMethodReturnAddress(className, methodName), VarType.Address), null);
@@ -426,14 +426,8 @@ public class CodeGenerator {
 
 		String methodName = symbolStack.pop();
 		Address s = ss.pop();
-		SymbolType t = symbolTable.getMethodReturnType(symbolStack.peek(), methodName);
-		VarType temp = VarType.Int;
-		switch (t) {
-			case Int:
-				break;
-			case Bool:
-				temp = VarType.Bool;
-		}
+		SymbolType symbolType = symbolTable.getMethodReturnType(symbolStack.peek(), methodName);
+		VarType temp = extractVarType(symbolType);
 		if (s.getVarType() != temp) {
 			ErrorHandler.printError("The type of method and return address was not match");
 		}
